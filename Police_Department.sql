@@ -1,7 +1,7 @@
 drop table if exists Rank CASCADE;
 drop table if exists Stations CASCADE;
 drop table if exists Speciality CASCADE;
-drop table if exists Vehciels CASCADE;
+drop table if exists Vehicles CASCADE;
 drop table if exists Body_Cameras CASCADE;
 drop table if exists Citations CASCADE;
 drop table if exists Offenders CASCADE;
@@ -73,7 +73,7 @@ create table Offense
 create table Citations
 (
     Citation_Book_ID serial PRIMARY KEY,
-    Citation_Number varchar(7),
+    Citation_Number varchar(7)
 );
 
 create table Sworn_Employees
