@@ -93,14 +93,52 @@ create table Sworn_Employees
     Citation_Book_ID smallint,
     Speciality_ID smallint,
     constraint FK_E_Patrol_Station_ID 
-    foreign key (FK_E_Patrol_Station_ID) references Stations(Patrol_Station_ID),
-    constraint 
-);
+    foreign key (Patrol_Station_ID) references Stations(Patrol_Station_ID),
+    constraint FK_E_Rank_ID
+    foreign key (Rank_ID) references Rank(Rank_ID),
+    constraint FK_E_Body_Camera_ID 
+    foreign key (Body_Camera_ID) references Body_Cameras(Body_Camera_ID),
+    constraint FK_E_Vehicle_ID
+    foreign key(Vehicle_ID) references Vehicles(Vehicle_ID),
+    constraint E_Citation_ID
+    foreign key (Citation_Book_ID) references Citations(Citation_Book_ID),
+    constraint E_Speciality 
+    foreign key (Speciality_ID) references Speciality(Speciality_ID)
+    );
 
 
 create table Case_Reports
 (
     Case_Report_ID serial PRIMARY KEY,
-  
+    Employee_ID smallint,
+    Offense_ID smallint,
+    Citation_Book_ID smallint,
+    Offender_ID smallint,
+    Date_Occurred DATE,
+    Time_Occurred timestamp,
+    Location_Address varchar(30) not null,
+    Locate_City varchar(30) not null,
+    Location_State char(2) not null,
+    constraint FK_E_Employee_ID
+    foreign key (Employee_ID) references Sworn_Employees(Employee_ID),
+    constraint FK_Case_Offense_ID 
+    foreign key (Offense_ID) references Offense(Offense_ID),
+    constraint FK_C_Citation_ID
+    foreign key (Citation_Book_ID) references Citations(Citation_Book_ID),
+    constraint FK_C_Offender_ID
+    foreign key (Offender_ID) references Offenders (Offender_ID)
 
-)
+);
+
+create table Court
+(
+    Court_ID serial PRIMARY KEY,
+    Case_Report_ID smallint,
+    Court_Date DATE not null,
+    Court_Time timestamp not null,
+    Court_Name varchar(30) not null,
+    Court_Address varchar(30) not null,
+    Phone char(10),
+    constraint C_Case_Report_ID
+    foreign key (Case_Report_ID) references Case_Reports(Case_Report_ID)
+);
