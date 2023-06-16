@@ -58,7 +58,7 @@ Create table Offenders
     Phone char (10),
     Offender_Address varchar (30),
     State char (2),
-    D.O.B. Date,
+    Date_Of_Birth Date,
     License varchar(20),
     License_State char(20)
 );
@@ -87,7 +87,7 @@ create table Sworn_Employees
     Employee_Address varchar(30),
     City varchar(20),
     State char(2),
-    D.O.B. Date,
+    Date_Of_Birth Date,
     Body_Camera_ID smallint,
     Vehicle_ID smallint,
     Citation_Book_ID smallint,
@@ -103,7 +103,9 @@ create table Sworn_Employees
     constraint E_Citation_ID
     foreign key (Citation_Book_ID) references Citations(Citation_Book_ID),
     constraint E_Speciality 
-    foreign key (Speciality_ID) references Speciality(Speciality_ID)
+    foreign key (Speciality_ID) references Speciality(Speciality_ID),
+    constraint UC_SwornEmployees_BodyCamera UNIQUE (Body_Camera_ID),
+    constraint UC_SwornEmployees_Vehicle UNIQUE (Vehicle_ID)
     );
 
 
