@@ -35,6 +35,7 @@ create table Speciality
 create table Vehicles
 (
     Vehicle_ID serial PRIMARY KEY,
+    Plate_Number varchar(6) UNIQUE,
     Color varchar(15),
     Car_Year char(4),
     Brand varchar(20),
