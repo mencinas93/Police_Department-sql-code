@@ -87,7 +87,6 @@ create table Sworn_Employees
     Date_Of_Birth Date,
     Body_Camera_ID smallint,
     Vehicle_ID smallint,
-    Citation_Book_ID smallint,
     Speciality_ID smallint,
     constraint FK_E_Patrol_Station_ID 
     foreign key (Patrol_Station_ID) references Stations(Patrol_Station_ID),
@@ -97,8 +96,6 @@ create table Sworn_Employees
     foreign key (Body_Camera_ID) references Body_Cameras(Body_Camera_ID),
     constraint FK_E_Vehicle_ID
     foreign key(Vehicle_ID) references Vehicles(Vehicle_ID),
-    constraint E_Citation_ID
-    foreign key (Citation_Book_ID) references Citations(Citation_Book_ID),
     constraint E_Speciality 
     foreign key (Speciality_ID) references Speciality(Speciality_ID),
     constraint UC_SwornEmployees_BodyCamera UNIQUE (Body_Camera_ID),
@@ -111,7 +108,6 @@ create table Case_Reports
     Case_Report_ID serial PRIMARY KEY,
     Employee_ID smallint,
     Offense_ID smallint,
-    Citation_Book_ID smallint,
     Offender_ID smallint,
     Date_Occurred DATE,
     Time_Occurred timestamp,
@@ -122,8 +118,6 @@ create table Case_Reports
     foreign key (Employee_ID) references Sworn_Employees(Employee_ID),
     constraint FK_Case_Offense_ID 
     foreign key (Offense_ID) references Offense(Offense_ID),
-    constraint FK_C_Citation_ID
-    foreign key (Citation_Book_ID) references Citations(Citation_Book_ID),
     constraint FK_C_Offender_ID
     foreign key (Offender_ID) references Offenders (Offender_ID)
 
