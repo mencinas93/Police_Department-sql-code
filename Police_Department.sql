@@ -3,9 +3,10 @@ drop table if exists Stations CASCADE;
 drop table if exists Speciality CASCADE;
 drop table if exists Vehicles CASCADE;
 drop table if exists Body_Cameras CASCADE;
-drop table if exists Citations CASCADE;
 drop table if exists Offenders CASCADE;
 drop table if exists Offense CASCADE;
+drop table if exists Sworn_Employees CASCADE;
+drop table if exists Citations CASCADE;
 drop table if exists Case_Reports CASCADE;
 drop table if exists Court CASCADE;
 
@@ -71,11 +72,6 @@ create table Offense
     Offense_Category varchar(10) not null
 );
 
-create table Citations
-(
-    Citation_Book_ID serial PRIMARY KEY,
-    Citation_Number varchar(7)
-);
 
 create table Sworn_Employees
 (
