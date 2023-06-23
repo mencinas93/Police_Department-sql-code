@@ -43,20 +43,19 @@ VALUES ('None');
 INSERT INTO Vehicles (Plate_Number, Color, Car_Year, Brand, Model, Registration_State, Registration_Expires)
 SELECT 
     CONCAT(
-        CHR(FLOOR(RANDOM() * 26) + 65), 
-        CHR(FLOOR(RANDOM() * 26) + 65), 
-        CHR(FLOOR(RANDOM() * 26) + 65), 
-        FLOOR(RANDOM() * 10)::INT, 
-        FLOOR(RANDOM() * 10)::INT, 
-        FLOOR(RANDOM() * 10)::INT, 
-        FLOOR(RANDOM() * 10)::INT 
+        chr(FLOOR(random() * 26 + 65)::integer),
+        chr(FLOOR(random() * 26 + 65)::integer),
+        chr(FLOOR(random() * 26 + 65)::integer),
+        FLOOR(random() * 10)::integer,
+        FLOOR(random() * 10)::integer,
+        FLOOR(random() * 10)::integer
     ) AS Plate_Number,
     'White' AS Color,
-    FLOOR(RANDOM() * 7) + 2017 AS Car_Year,
-    CASE WHEN RANDOM() < 0.5 THEN 'Chevrolet Tahoe' ELSE 'Ford Taurus' END AS Brand,
-    CASE WHEN RANDOM() < 0.5 THEN 'Tahoe' ELSE 'Taurus' END AS Model,
+    FLOOR(random() * 7) + 2017 AS Car_Year,
+    CASE WHEN random() < 0.5 THEN 'Chevrolet Tahoe' ELSE 'Ford Taurus' END AS Brand,
+    CASE WHEN random() < 0.5 THEN 'Tahoe' ELSE 'Taurus' END AS Model,
     'KY' AS Registration_State,
-    CURRENT_DATE + (FLOOR(RANDOM() * 365)::INT || ' days')::INTERVAL AS Registration_Expires
+    CURRENT_DATE + (FLOOR(random() * 365)::integer || ' days')::interval AS Registration_Expires
 FROM generate_series(1, 21);
 
 
