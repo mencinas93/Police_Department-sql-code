@@ -6,7 +6,6 @@ drop table if exists Body_Cameras CASCADE;
 drop table if exists Offenders CASCADE;
 drop table if exists Offense CASCADE;
 drop table if exists Sworn_Employees CASCADE;
-drop table if exists Citations CASCADE;
 drop table if exists Case_Reports CASCADE;
 drop table if exists Court CASCADE;
 
