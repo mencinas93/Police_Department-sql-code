@@ -11,13 +11,13 @@ insert into Rank(Rank_Title, Salary)
 VALUES ('Lieutenant', 130000.00);
 
 INSERT INTO Stations (Station_Name, Phone, Station_Address, City)
-VALUES ('West Sector', '859-000-0001', '105 Oak Street', 'Lexington');
+VALUES ('West Sector', '859258001', '105 Oak Street', 'Lexington');
 
 INSERT INTO Stations (Station_Name, Phone, Station_Address, City)
-VALUES ('Central Sector', '859-000-0002', '230 W Main Street', 'Lexington');
+VALUES ('Central Sector', '8592580881', '230 W Main Street', 'Lexington');
 
 INSERT INTO Stations (Station_Name, Phone, Station_Address, City)
-VALUES ('East Sector', '859-000-0003', '356 Ash Drive', 'Lexington');
+VALUES ('East Sector', '8592580145', '356 Ash Drive', 'Lexington');
 
 INSERT INTO Speciality (Speciality_Skill)
 VALUES ('Bilingual');
@@ -41,28 +41,28 @@ INSERT INTO Speciality (Speciality_Skill)
 VALUES ('None');
 
 INSERT INTO Vehicles (Plate_Number, Color, Car_Year, Brand, Model, Registration_State, Registration_Expires)
-SELECT CONCAT(
-        CHAR(FLOOR(RAND() * 26) + 65), 
-        CHAR(FLOOR(RAND() * 26) + 65), 
-        CHAR(FLOOR(RAND() * 26) + 65), 
-        FLOOR(RAND() * 10), 
-        FLOOR(RAND() * 10), 
-        FLOOR(RAND() * 10), 
-        FLOOR(RAND() * 10) 
+SELECT 
+    CONCAT(
+        CHR(FLOOR(RANDOM() * 26) + 65), 
+        CHR(FLOOR(RANDOM() * 26) + 65), 
+        CHR(FLOOR(RANDOM() * 26) + 65), 
+        FLOOR(RANDOM() * 10)::INT, 
+        FLOOR(RANDOM() * 10)::INT, 
+        FLOOR(RANDOM() * 10)::INT, 
+        FLOOR(RANDOM() * 10)::INT 
     ) AS Plate_Number,
     'White' AS Color,
-    FLOOR(RAND() * 7) + 2017 AS Car_Year,
-    CASE WHEN RAND() < 0.5 THEN 'Chevrolet Tahoe' ELSE 'Ford Taurus' END AS Brand,
-    CASE WHEN RAND() < 0.5 THEN 'Tahoe' ELSE 'Taurus' END AS Model,
+    FLOOR(RANDOM() * 7) + 2017 AS Car_Year,
+    CASE WHEN RANDOM() < 0.5 THEN 'Chevrolet Tahoe' ELSE 'Ford Taurus' END AS Brand,
+    CASE WHEN RANDOM() < 0.5 THEN 'Tahoe' ELSE 'Taurus' END AS Model,
     'KY' AS Registration_State,
-    CURDATE() + INTERVAL FLOOR(RAND() * 365) DAY AS Registration_Expires
+    CURRENT_DATE + (FLOOR(RANDOM() * 365)::INT || ' days')::INTERVAL AS Registration_Expires
 FROM generate_series(1, 21);
 
 
-INSERT INTO Body_Cameras(Brand)
-VALUES
-('AXON')
-FROM generate_Series(1,21);
+INSERT INTO Body_Cameras (Brand)
+SELECT 'AXON'
+FROM generate_series(1, 21);
 
 
 INSERT INTO Offenders (First_Name, Last_Name, Phone, Offender_Address, State, Date_Of_Birth, License,License_State)
@@ -120,7 +120,7 @@ VALUES
     ('No Operator''s License', 'Traffic'),
     ('No Insurance', 'Traffic'),
     ('Expired Registration Plate', 'Traffic');
-    
+
 INSERT INTO Sworn_Employees (Patrol_Station_ID, Rank_ID, First_Name, Last_Name, Phone, Employee_Address, City, State, Date_Of_Birth, Body_Camera_ID, Vehicle_ID, Speciality_ID)
 VALUES
     (1, 1, 'Lucas', 'Steel', '8595639801', '405 Elmwood Street', 'Lexington', 'KY', '1993-01-01', 1, 1, 4),
@@ -137,7 +137,7 @@ VALUES
     (2, 1, 'Michael', 'Diaz', '8594447690', '121 Floyd Drive', 'Lexington', 'KY', '1992-06-10', 11, 11, 7),
     (2, 2, 'Albert', 'Macias', '8590018901', '571 Union Drive', 'Georgetown', 'KY', '1990-09-25', 12, 12, 2),
     (2, 3, 'Jacob', 'Johnson', '8595589012', '89 Winchester Road', 'Lexington', 'KY', '1987-03-15', 13, 13, 3),
-    (2, 4, 'Jimmy', 'Floyd', '8592899990', '481 New Circle Road', 'Lexington', 'KY', '1982-08-20', 14, 14, 7);
+    (2, 4, 'Jimmy', 'Floyd', '8592899990', '481 New Circle Road', 'Lexington', 'KY', '1982-08-20', 14, 14, 7),
 
     (3, 1, 'Lilly', 'Chase', '8596723345', '134 Christa Drive', 'Nicholasville', 'KY', '1985-05-25', 15, 15, 5),
     (3, 1, 'Christopher', 'Martinez', '8593456757', '375 Bingham Drive', 'Lexington', 'KY', '1998-10-10', 16, 16, 5),

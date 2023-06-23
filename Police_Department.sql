@@ -30,7 +30,7 @@ create table Stations
 create table Speciality
 (
     Speciality_ID serial PRIMARY KEY,
-    Speciality_Skill Varchar(20)
+    Speciality_Skill Varchar(30)
 );
 
 create table Vehicles
@@ -68,7 +68,7 @@ Create table Offenders
 create table Offense 
 (
     Offense_ID serial PRIMARY KEY,
-    Offense_Name varchar (30) not null,
+    Offense_Name varchar (60) not null,
     Offense_Category varchar(10) not null
 );
 
