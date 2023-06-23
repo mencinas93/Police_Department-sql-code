@@ -120,3 +120,30 @@ VALUES
     ('No Operator''s License', 'Traffic'),
     ('No Insurance', 'Traffic'),
     ('Expired Registration Plate', 'Traffic');
+    
+INSERT INTO Sworn_Employees (Patrol_Station_ID, Rank_ID, First_Name, Last_Name, Phone, Employee_Address, City, State, Date_Of_Birth, Body_Camera_ID, Vehicle_ID, Speciality_ID)
+VALUES
+    (1, 1, 'Lucas', 'Steel', '8595639801', '405 Elmwood Street', 'Lexington', 'KY', '1993-01-01', 1, 1, 4),
+    (1, 1, 'Max', 'Sparks', '8591245643', '160 Nicholasville Road', 'Lexington', 'KY', '1995-02-15', 2, 2, 6),
+    (1, 1, 'Michael', 'Rodriguez', '8596456449', '721 Harrodsburg Road', 'Lexington', 'KY', '1996-07-20', 3, 3, 1),
+    (1, 1, 'Kurt', 'Moses', '8594569000', '57 Spring Run Road', 'Lexington', 'KY', '1997-11-30', 4, 4, 7),
+    (1, 2, 'Richard', 'Lopez', '8594215690', '45 East 7th Street', 'Louisville', 'KY', '1988-05-10', 5, 5, 3),
+    (1, 3, 'James', 'Suttle', '8596689992', '510 Southland Drive', 'Ashland', 'KY', '1986-09-25', 6, 6, 7),
+    (1, 4, 'Thomas', 'Holland', '8590100556', '303 Clay Avenue', 'Richmond', 'KY', '1981-03-05', 7, 7, 7),
+
+    (2, 1, 'Thomas', 'Heard', '85956645i7', '45 Rose Street', 'Versailles', 'KY', '1990-01-01', 8, 8, 1),
+    (2, 1, 'Xavier', 'Loyd', '8592940001', '310 Fort Harrods Drive', 'Lexington', 'KY', '1995-02-15', 9, 9, 4),
+    (2, 1, 'Jason', 'Mitchell', '8593766778', '210 E Main Street', 'Georgetown', 'KY', '1994-07-20', 10, 10, 5),
+    (2, 1, 'Michael', 'Diaz', '8594447690', '121 Floyd Drive', 'Lexington', 'KY', '1992-06-10', 11, 11, 7),
+    (2, 2, 'Albert', 'Macias', '8590018901', '571 Union Drive', 'Georgetown', 'KY', '1990-09-25', 12, 12, 2),
+    (2, 3, 'Jacob', 'Johnson', '8595589012', '89 Winchester Road', 'Lexington', 'KY', '1987-03-15', 13, 13, 3),
+    (2, 4, 'Jimmy', 'Floyd', '8592899990', '481 New Circle Road', 'Lexington', 'KY', '1982-08-20', 14, 14, 7);
+
+    (3, 1, 'Lilly', 'Chase', '8596723345', '134 Christa Drive', 'Nicholasville', 'KY', '1985-05-25', 15, 15, 5),
+    (3, 1, 'Christopher', 'Martinez', '8593456757', '375 Bingham Drive', 'Lexington', 'KY', '1998-10-10', 16, 16, 5),
+    (3, 1, 'Shelly', 'White', '8594326678', '890 Starlight Lane', 'Georgetown', 'KY', '1999-04-15', 17, 17, 4),
+    (3, 1, 'Ryan', 'Beloso', '8598910348', '908 Palomar Drive', 'Lexington', 'KY', '1986-09-30', 18, 18, 7),
+    (3, 2, 'Brian', 'Olson', '8594213305', '3767 Rabbit Lane', 'Lexington', 'KY', '1991-12-05', 19, 19, 3),
+    (3, 3, 'Allison', 'Blake', '8594763244', '657 Walter Drive', 'Versailles', 'KY', '1990-06-20', 20, 20, 7),
+    (3, 4, 'Colton', 'Smith', '8594735564', '276 BrassRoad', 'Ashland', 'KY', '1983-11-25', 21, 21, 7);
+
