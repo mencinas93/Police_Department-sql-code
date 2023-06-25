@@ -146,3 +146,26 @@ VALUES
     (3, 3, 'Allison', 'Blake', '8594763244', '657 Walter Drive', 'Versailles', 'KY', '1990-06-20', 20, 20, 7),
     (3, 4, 'Colton', 'Smith', '8594735564', '276 BrassRoad', 'Ashland', 'KY', '1983-11-25', 21, 21, 7);
 
+INSERT INTO Case_Reports (Employee_ID, Offense_ID, Offender_ID, Date_Occurred, Time_Occurred, Location_Address, Locate_City, Location_State)
+VALUES
+    (1, 3, 1, '2023-07-15', '2023-07-15 09:30:00', '12 Michigan Avenue', 'Lexington', 'KY'),
+    (2, 4, 2, '2023-07-14', '2023-07-14 14:22:00', '456 Elm Street', 'Lexington', 'KY'),
+     (3, 21, 3, '2023-07-15', '2023-07-15 06:45:00', '71 Oak Drive', 'Lexington', 'KY'),
+    (1, 25, 4, '2023-07-15', '2023-07-15 16:33:00', '810 Saron Avenue', 'Lexington', 'KY'),
+    (4, 22, 5, '2023-07-15', '2023-07-15 00:25:00', '1645 Southland Drive', 'Lexington', 'KY'),
+    (5, 2, 6, '2023-07-14', '2023-07-14 20:04:00', '326 Harrison Avenue', 'Lexington', 'KY'),
+     (8, 11, 7, '2023-07-14', '2023-07-14 22:56:00', '983 Shropshire Street', 'Lexington', 'KY'),
+    (10, 7, 8, '2023-07-15', '2023-07-15 11:27:00', '210 Newtown Court', 'Lexington', 'KY'),
+       (11, 14, 9, '2023-07-15', '2023-07-15 08:50:00', '211 Mainside Road', 'Lexington', 'KY'),
+    (11, 17, 10, '2023-07-14', '2023-07-14 15:13:00', '901 Elmwood Road', 'Lexington', 'KY'),
+     (12, 6, 11, '2023-07-15', '2023-07-15 09:10:00', '761 Edwards Drive', 'Lexington', 'KY'),
+    (13, 5, 12, '2023-07-15', '2023-07-15 18:31:00', '51 Sexton Road', 'Lexington', 'KY'),
+    (15, 25, 13, '2023-07-14', '2023-07-14 19:00:00', '324 Conlon Court', 'Lexington', 'KY'),
+    (16, 8, 14, '2023-07-14', '2023-07-14 18:05:00', '3912 Bingham Court', 'Lexington', 'KY'),
+     (17, 15, 15, '2023-07-14', '2023-07-14 23:31:00', '1607 Wells Avenue', 'Lexington', 'KY'),
+    (17, 12, 16, '2023-07-14', '2023-07-14 03:31:00', '101 Main Street', 'Lexington', 'KY'),
+         (18, 18, 17, '2023-07-14', '2023-07-14 02:00:00', '124 Main Avenue', 'Lexington', 'KY'),
+    (18, 19, 18, '2023-07-15', '2023-07-15 02:25:00', '455 Elway Road', 'Lexington', 'KY'),
+    (19, 13, 19, '2023-07-15', '2023-07-15 15:50:00', '533 Chino Road', 'Lexington', 'KY'),
+    (20, 7, 20, '2023-07-14', '2023-07-14 10:59:00', '671 Wynham Drive', 'Lexington', 'KY'),
+     (20, 16, 21, '2023-07-15', '2023-07-15 16:23:00', '987 Temecula Drive', 'Lexington', 'KY');
