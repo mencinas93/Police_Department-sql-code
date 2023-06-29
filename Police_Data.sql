@@ -40,7 +40,7 @@ VALUES ('Traffic');
 INSERT INTO Speciality (Speciality_Skill)
 VALUES ('None');
 
-INSERT INTO Vehicles (Plate_Number, Color, Car_Year, Brand, Model, Registration_State, Registration_Expires)
+INSERT INTO Vehicles (Plate_Number, Color, Car_Year, Make_and_Model, Registration_State, Registration_Expires)
 SELECT 
     CONCAT(
         chr(FLOOR(random() * 26 + 65)::integer),
@@ -52,8 +52,7 @@ SELECT
     ) AS Plate_Number,
     'White' AS Color,
     FLOOR(random() * 7) + 2017 AS Car_Year,
-    CASE WHEN random() < 0.5 THEN 'Chevrolet Tahoe' ELSE 'Ford Taurus' END AS Brand,
-    CASE WHEN random() < 0.5 THEN 'Tahoe' ELSE 'Taurus' END AS Model,
+    CASE WHEN random() < 0.5 THEN 'Chevrolet Tahoe' ELSE 'Ford Taurus' END AS Make_and_Model,
     'KY' AS Registration_State,
     CURRENT_DATE + (FLOOR(random() * 365)::integer || ' days')::interval AS Registration_Expires
 FROM generate_series(1, 21);
