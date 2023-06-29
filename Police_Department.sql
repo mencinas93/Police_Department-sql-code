@@ -38,8 +38,7 @@ create table Vehicles
     Plate_Number varchar(6) UNIQUE,
     Color varchar(15),
     Car_Year char(4),
-    Brand varchar(20),
-    Model varchar(20),
+    Make_and_Model varchar(20),
     Registration_State char(2),
     Registration_Expires Date
     
