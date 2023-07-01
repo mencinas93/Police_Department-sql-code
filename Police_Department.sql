@@ -1,13 +1,13 @@
-drop table if exists Rank CASCADE;
-drop table if exists Stations CASCADE;
-drop table if exists Speciality CASCADE;
-drop table if exists Vehicles CASCADE;
-drop table if exists Body_Cameras CASCADE;
-drop table if exists Offenders CASCADE;
-drop table if exists Offense CASCADE;
-drop table if exists Sworn_Employees CASCADE;
-drop table if exists Case_Reports CASCADE;
-drop table if exists Court CASCADE;
+DROP TABLE IF EXISTS Court CASCADE;
+DROP TABLE IF EXISTS Case_Reports CASCADE;
+DROP TABLE IF EXISTS Sworn_Employees CASCADE;
+DROP TABLE IF EXISTS Offense CASCADE;
+DROP TABLE IF EXISTS Offenders CASCADE;
+DROP TABLE IF EXISTS Body_Cameras CASCADE;
+DROP TABLE IF EXISTS Vehicles CASCADE;
+DROP TABLE IF EXISTS Speciality CASCADE;
+DROP TABLE IF EXISTS Stations CASCADE;
+DROP TABLE IF EXISTS Rank CASCADE;
 
 
 create table Rank
@@ -29,17 +29,17 @@ create table Stations
 create table Speciality
 (
     Speciality_ID serial PRIMARY KEY,
-    Speciality_Skill Varchar(30)
+    Speciality_Skill Varchar(30) not null
 );
 
 create table Vehicles
 (
     Vehicle_ID serial PRIMARY KEY,
-    Plate_Number varchar(6) UNIQUE,
+    Plate_Number varchar(6) UNIQUE not null,
     Color varchar(15),
-    Car_Year char(4),
-    Make_and_Model varchar(20),
-    Registration_State char(2),
+    Car_Year char(4) not null,
+    Make_and_Model varchar(20) not null,
+    Registration_State char(2) not null,
     Registration_Expires Date
     
 );
@@ -82,7 +82,7 @@ create table Sworn_Employees
     Employee_Address varchar(30),
     City varchar(20),
     State char(2),
-    Date_Of_Birth Date,
+    Date_Of_Birth Date not null,
     Body_Camera_ID smallint,
     Vehicle_ID smallint,
     Speciality_ID smallint,
