@@ -1,3 +1,5 @@
+BEGIN;
+
 DROP TABLE IF EXISTS Court CASCADE;
 DROP TABLE IF EXISTS Case_Reports CASCADE;
 DROP TABLE IF EXISTS Sworn_Employees CASCADE;
@@ -17,6 +19,9 @@ create table Rank
     Salary decimal(10,2)
 );
 
+CREATE INDEX Index_Rank_Titles ON Rank (Rank_Title);
+
+
 create table Stations
 (
     Patrol_Station_ID serial PRIMARY key,
@@ -25,6 +30,8 @@ create table Stations
     Station_Address varchar(30),
     City varchar(20)
 );
+
+
 
 create table Speciality
 (
@@ -41,8 +48,10 @@ create table Vehicles
     Make_and_Model varchar(20) not null,
     Registration_State char(2) not null,
     Registration_Expires Date
-    
 );
+
+CREATE INDEX Index_Plate_Number ON Vehicles (Plate_Number);
+
 
 create table Body_Cameras
 (
@@ -63,12 +72,17 @@ Create table Offenders
     License_State char(20)
 );
 
+CREATE INDEX Infex_Offenders_FirstName_LastName ON Offenders (First_Name, Last_Name);
+
+
 create table Offense 
 (
     Offense_ID serial PRIMARY KEY,
     Offense_Name varchar (60) not null,
-    Offense_Category varchar(10) not null
+    Offense_Category varchar(10) not null,
 );
+
+CREATE INDEX INDEX_Offense_Category ON Offense (Offense_Category);
 
 
 create table Sworn_Employees
@@ -87,18 +101,34 @@ create table Sworn_Employees
     Vehicle_ID smallint,
     Speciality_ID smallint,
     constraint FK_E_Patrol_Station_ID 
-    foreign key (Patrol_Station_ID) references Stations(Patrol_Station_ID),
+    foreign key (Patrol_Station_ID) references Stations(Patrol_Station_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint FK_E_Rank_ID
-    foreign key (Rank_ID) references Rank(Rank_ID),
+    foreign key (Rank_ID) references Rank(Rank_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint FK_E_Body_Camera_ID 
-    foreign key (Body_Camera_ID) references Body_Cameras(Body_Camera_ID),
+    foreign key (Body_Camera_ID) references Body_Cameras(Body_Camera_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint FK_E_Vehicle_ID
-    foreign key(Vehicle_ID) references Vehicles(Vehicle_ID),
+    foreign key(Vehicle_ID) references Vehicles(Vehicle_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint E_Speciality 
-    foreign key (Speciality_ID) references Speciality(Speciality_ID),
+    foreign key (Speciality_ID) references Speciality(Speciality_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint UC_SwornEmployees_BodyCamera UNIQUE (Body_Camera_ID),
     constraint UC_SwornEmployees_Vehicle UNIQUE (Vehicle_ID)
     );
+
+CREATE INDEX Index_SwornEmployees_FirstName_LastName ON Sworn_Employees (First_Name, Last_Name);
+CREATE INDEX FK_E_Patrol_Station_ID ON Sworn_Employees (Patrol_Station_ID);
+CREATE INDEX FK_E_Rank_ID ON Sworn_Employees (Rank_ID);
+CREATE INDEX FK_E_Body_Camera_ID ON Sworn_Employees (Body_Camera_ID);
+CREATE INDEX FK_E_Vehicle_ID ON Sworn_Employees (Vehicle_ID);
 
 
 create table Case_Reports
@@ -113,13 +143,25 @@ create table Case_Reports
     Locate_City varchar(30) not null,
     Location_State char(2) not null,
     constraint FK_E_Employee_ID
-    foreign key (Employee_ID) references Sworn_Employees(Employee_ID),
+    foreign key (Employee_ID) references Sworn_Employees(Employee_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint FK_Case_Offense_ID 
-    foreign key (Offense_ID) references Offense(Offense_ID),
+    foreign key (Offense_ID) references Offense(Offense_ID)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
     constraint FK_C_Offender_ID
     foreign key (Offender_ID) references Offenders (Offender_ID)
-
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+    INDEX Index_Employee_ID (Employee_ID),
+    INDEX Index_Offense_ID (Offense_ID),
+    INDEX Index_Offender_ID (Offender_ID)
 );
+
+CREATE INDEX Index_Employee_ID ON Case_Reports (Employee_ID);
+CREATE INDEX Index_Offense_ID ON Case_Reports (Offense_ID);
+CREATE INDEX Index_Offender_ID ON Case_Reports (Offender_ID);
 
 create table Court
 (
@@ -132,4 +174,11 @@ create table Court
     Phone char(10),
     constraint C_Case_Report_ID
     foreign key (Case_Report_ID) references Case_Reports(Case_Report_ID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    INDEX Index_Cases(Case_Report_ID)
 );
+
+CREATE INDEX Index_Cases ON Court (Case_Report_ID);
+
+ROLLBACK;
