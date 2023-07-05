@@ -125,10 +125,10 @@ create table Sworn_Employees
     );
 
 CREATE INDEX Index_SwornEmployees_FirstName_LastName ON Sworn_Employees (First_Name, Last_Name);
-CREATE INDEX FK_E_Patrol_Station_ID ON Sworn_Employees (Patrol_Station_ID);
-CREATE INDEX FK_E_Rank_ID ON Sworn_Employees (Rank_ID);
-CREATE INDEX FK_E_Body_Camera_ID ON Sworn_Employees (Body_Camera_ID);
-CREATE INDEX FK_E_Vehicle_ID ON Sworn_Employees (Vehicle_ID);
+CREATE INDEX INDEX_E_Patrol_Station_ID ON Sworn_Employees (Patrol_Station_ID);
+CREATE INDEX INDEX_E_Rank_ID ON Sworn_Employees (Rank_ID);
+CREATE INDEX INDEX_E_Body_Camera_ID ON Sworn_Employees (Body_Camera_ID);
+CREATE INDEX INDEX_E_Vehicle_ID ON Sworn_Employees (Vehicle_ID);
 
 
 create table Case_Reports
@@ -181,4 +181,4 @@ create table Court
 
 CREATE INDEX Index_Cases ON Court (Case_Report_ID);
 
-ROLLBACK;
+commit;
