@@ -28,7 +28,8 @@ create table Stations
     Station_Name varchar(20) not null,
     Phone char(10),
     Station_Address varchar(30),
-    City varchar(20)
+    City varchar(20),
+    CONSTRAINT CHK_Stations_Name_Location CHECK (Station_Name IS NOT NULL AND Station_Address IS NOT NULL AND City IS NOT NULL)
 );
 
 
@@ -47,7 +48,9 @@ create table Vehicles
     Car_Year char(4) not null,
     Make_and_Model varchar(20) not null,
     Registration_State char(2) not null,
-    Registration_Expires Date
+    Registration_Expires Date,
+    CONSTRAINT CHK_Vehicle_PlateYearMakeModel CHECK (Plate_Number IS NOT NULL AND 
+    Car_Year IS NOT NULL AND Make_and_Model IS NOT NULL)
 );
 
 CREATE INDEX Index_Plate_Number ON Vehicles (Plate_Number);
@@ -69,7 +72,9 @@ Create table Offenders
     State char (2),
     Date_Of_Birth Date,
     License varchar(20),
-    License_State char(20)
+    License_State char(20),
+    CONSTRAINT CHK_Offender_Name_DateOfBirth
+    CHECK (First_Name IS NOT NULL AND Last_Name IS NOT NULL AND Date_Of_Birth IS NOT NULL)
 );
 
 CREATE INDEX Infex_Offenders_FirstName_LastName ON Offenders (First_Name, Last_Name);
@@ -80,6 +85,7 @@ create table Offense
     Offense_ID serial PRIMARY KEY,
     Offense_Name varchar (60) not null,
     Offense_Category varchar(10) not null,
+    CONSTRAINT CHK_Offense CHECK (Offense_Name IS NOT NULL AND Offense_Category IS NOT NULL)
 );
 
 CREATE INDEX INDEX_Offense_Category ON Offense (Offense_Category);
@@ -121,7 +127,9 @@ create table Sworn_Employees
     ON DELETE SET NULL
     ON UPDATE CASCADE,
     constraint UC_SwornEmployees_BodyCamera UNIQUE (Body_Camera_ID),
-    constraint UC_SwornEmployees_Vehicle UNIQUE (Vehicle_ID)
+    constraint UC_SwornEmployees_Vehicle UNIQUE (Vehicle_ID),
+    CONSTRAINT CHK_SwornEmployee_Name_DateOfBirth CHECK (First_Name IS NOT NULL AND
+    Last_Name IS NOT NULL AND Date_Of_Birth IS NOT NULL)
     );
 
 CREATE INDEX Index_SwornEmployees_FirstName_LastName ON Sworn_Employees (First_Name, Last_Name);
@@ -156,7 +164,9 @@ create table Case_Reports
     ON UPDATE CASCADE,
     INDEX Index_Employee_ID (Employee_ID),
     INDEX Index_Offense_ID (Offense_ID),
-    INDEX Index_Offender_ID (Offender_ID)
+    INDEX Index_Offender_ID (Offender_ID),
+    CONSTRAINT CHK_CaseReport_Location_Offense_Offender CHECK (Location_Address IS NOT NULL AND Locate_City IS NOT NULL AND Location_State IS NOT NULL AND Offense_ID IS NOT NULL AND Offender_ID 
+    IS NOT NULL AND Employee_ID IS NOT NULL and Date_Occurred IS NOT NULL AND Time_Occurred IS NOT NULL)
 );
 
 CREATE INDEX Index_Employee_ID ON Case_Reports (Employee_ID);
@@ -176,9 +186,11 @@ create table Court
     foreign key (Case_Report_ID) references Case_Reports(Case_Report_ID)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-    INDEX Index_Cases(Case_Report_ID)
+    INDEX Index_Cases(Case_Report_ID),
+    CONSTRAINT CHK_Court_Date_Time_Report_Address CHECK (Court_Date IS NOT NULL 
+    AND Court_Time IS NOT NULL AND Case_Report_ID IS NOT NULL AND Court_Name IS NOT NULL)
 );
 
 CREATE INDEX Index_Cases ON Court (Case_Report_ID);
 
-commit;
+Commit;
