@@ -1,4 +1,3 @@
-BEGIN;
 
 DROP TABLE IF EXISTS Court CASCADE;
 DROP TABLE IF EXISTS Case_Reports CASCADE;
@@ -162,9 +161,6 @@ create table Case_Reports
     foreign key (Offender_ID) references Offenders (Offender_ID)
     ON DELETE SET NULL
     ON UPDATE CASCADE,
-    INDEX Index_Employee_ID (Employee_ID),
-    INDEX Index_Offense_ID (Offense_ID),
-    INDEX Index_Offender_ID (Offender_ID),
     CONSTRAINT CHK_CaseReport_Location_Offense_Offender CHECK (Location_Address IS NOT NULL AND Locate_City IS NOT NULL AND Location_State IS NOT NULL AND Offense_ID IS NOT NULL AND Offender_ID 
     IS NOT NULL AND Employee_ID IS NOT NULL and Date_Occurred IS NOT NULL AND Time_Occurred IS NOT NULL)
 );
@@ -186,11 +182,8 @@ create table Court
     foreign key (Case_Report_ID) references Case_Reports(Case_Report_ID)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-    INDEX Index_Cases(Case_Report_ID),
     CONSTRAINT CHK_Court_Date_Time_Report_Address CHECK (Court_Date IS NOT NULL 
     AND Court_Time IS NOT NULL AND Case_Report_ID IS NOT NULL AND Court_Name IS NOT NULL)
 );
 
 CREATE INDEX Index_Cases ON Court (Case_Report_ID);
-
-Commit;
